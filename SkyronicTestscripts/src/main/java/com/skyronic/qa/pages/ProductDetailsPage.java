@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.skyronic.qa.base.TestBase;
 
 public class ProductDetailsPage extends TestBase {
-	
+	//Object Repository
 	ProductsListPage pdtListPage;
 	
 	@FindBy(xpath="//button[contains(text(), 'Add to cart')]")
@@ -19,24 +19,24 @@ public class ProductDetailsPage extends TestBase {
 	@FindBy(css=".product-title")
 	WebElement pdtTitle;
 	
-	public String inStockInfo;
+	@FindBy(partialLinkText="Cart")
+	WebElement cartNumber;
 	
-
+	@FindBy(xpath="//button[contains(text(), 'Out Of Stock')]")
+	WebElement outOfStock;
+	
+	//To initialize webElemments
 	
 	public ProductDetailsPage(){
 		PageFactory.initElements(driver, this);
 		 pdtListPage= new ProductsListPage();
-		
+	
 		
 	}
-//	
-//	public static void validatePdtDetails(){
-//		//pdtListPage.clickIpad4Mini();
-//		
-//	}
-
+//To verify pdt details on the PDP page
+	
 	public  boolean inStockDetails() {
-		pdtListPage.clickIpad4Mini();
+		//pdtListPage.clickIpad4Mini();
 		if(inStock.isDisplayed()==true){
 			if (pdtTitle.isDisplayed()==true){
 				if(addToCartbtn.isEnabled()==true){
@@ -44,19 +44,31 @@ public class ProductDetailsPage extends TestBase {
 				}
 				}
 			} return true;
-		
 	}
-		public  boolean pdtTitleText() {
-			return pdtTitle.isDisplayed();
+		//To add a product to cart and check the cart count
+	public boolean addProductToCart(){
+		String initCartNumber = cartNumber.getText(); 
+		String latestCartNumber = "";
+		
+		addToCartbtn.click();
+		latestCartNumber = cartNumber.getText();
+		if (initCartNumber.equalsIgnoreCase(latestCartNumber)){
+			return false;
 		}
-	
-			public  boolean addToCart() {
-				return addToCartbtn.isDisplayed();
-		
+		return true;
 	}
-			public void addProductToCart(){
+
+	//To check out of stock
+	public boolean checkProductstock(){
+		boolean active = true;
+		while(active){
+			if (!inStock.getText().endsWith("0")){
 				addToCartbtn.click();
-				
+			}else{
+				active = false;
 			}
+		}	
+		return outOfStock.isDisplayed();
+	}
 	
 }

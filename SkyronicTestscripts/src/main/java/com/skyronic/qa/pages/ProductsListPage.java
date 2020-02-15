@@ -13,7 +13,7 @@ import com.skyronic.qa.base.TestBase;
 
 public class ProductsListPage extends TestBase {
 	
-	//OR
+	//Object Repository
 	
 	@FindBy(linkText="iPad 4 Mini")
 	WebElement iPad4Mini;
@@ -24,11 +24,12 @@ public class ProductsListPage extends TestBase {
 	@FindBy(linkText="Charli XCX - Sucker CD")
 	WebElement charliSuckerCD;
 	
+	//To initialise web elements
 	public ProductsListPage(){
 		PageFactory.initElements(driver, this);
 	}
 	
-	
+	//To verify if pdt shows in the required order
 	public boolean sortProductValidate(WebDriver driver){
 
 		String product = "";
@@ -68,9 +69,9 @@ public class ProductsListPage extends TestBase {
 		} return valid;
 	}
 	
+	//To select a product
 	public ProductDetailsPage clickIpad4Mini(){
-		iPad4Mini.click();
-		
+		iPad4Mini.click();	
 		return new ProductDetailsPage();
 	}
 }

@@ -1,0 +1,31 @@
+ Prerequisite:
+ 
+Install eclipse - Version: Neon.2 Release (4.6.2)
+Install Java JDK 1.8.0_131
+OS - Windows10 Home 64 bit	
+Applicable for Chrome - Version 80.0.3987.106 (Official Build) (64-bit)
+ 
+TestNg framework with Maven using page object model
+
+Steps to execute:
+
+Clone the GitHub URL
+Open GitHub view in Eclipse, Click on clone a Git repository
+Click on clone URI
+Click on next, Select the preferred directory
+Click on import all existing eclipse projects after clone finishes
+Right click on project folder > Run > Click on MavenTest
+
+To verify Report
+
+Refresh project folder after execution
+Go To test-output folder > double click on index.html or right click and open as a web browser option 
+ 
+To do:
+Extend Report integration
+screenshot for pass/ Fail
+Jenkin Integration
+To integrate with BDD
+Log Files
+ 
+ 

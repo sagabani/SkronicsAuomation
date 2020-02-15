@@ -34,7 +34,7 @@ public class TestBase {
 	}
 	
 	public static void initialization(){
-		
+		//To launch Chrome
 		String browserName=prop.getProperty("browser");
 		if(browserName.equalsIgnoreCase("chrome"))
 			System.setProperty("webdriver.chrome.driver","chromedriver.exe" );
@@ -42,15 +42,12 @@ public class TestBase {
 			
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
-			driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 			
+			// To load url
 			driver.get(prop.getProperty("url"));
 			
-		
-
-		
-	
 
 	}
 	}
